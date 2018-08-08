@@ -61,11 +61,14 @@ class ProductsController extends Controller
             $op->product_id = $prod_id;
             $op->quantity = $quantity;
             $op->size = $size;
-            $op->cost = $prod->price * $quantity;
+            $cost = $prod->price * $quantity;
+            $profit = 0.1 * $cost;
+            $op->cost = $cost + $profit;
             $order->total = $order->total + $op->cost;
             $order->order_products()->save($op);
             
             $total = $order->total;
+            $order->save();
         }
         $items = $order->order_products->count();
         return json_encode([$total, $id, $items]);
