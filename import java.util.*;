@@ -1,0 +1,190 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+
+class Knapsack implements Comparable <Knapsack>{
+        int w;
+        int v;
+        float d;
+
+    // constructor
+    //   public Knapsack(int w, int v, int d) {
+    //       this.w = w;
+    //       this.v = v;
+    //       this.d = d;
+    //   }
+
+       // getter
+       public int getW() { return w; }
+       public int getV() { return v; }
+       public float getD() { return d; }
+       // setter
+
+       public void setW(int w) { this.w = w; }
+       public void setV(int v) { this.v = v; }
+       public void setD(float d) { this.d = d; }
+       
+      public int compareTo(Knapsack k){
+          float compared = ((Knapsack) k).getD();
+          return (int) (compared - this.d);
+      }
+       
+    //   public static Comparator<Knapsack> dComparator() = 
+    //         new Comparator<Knapsack>() {
+    //             public int compare(Knapsack itm1, Knapsack itm2){
+    //                 float itm1d = itm1.getD();
+    //                 float itm2d = itm2.getD();
+    //                 return itm1d.compareTo(itm2d);
+    //             }
+    //         };
+}
+
+/* Name of the class has to be "Main" only if the class is public. */
+public class TestClass
+{
+    
+    
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner s = new Scanner(System.in);
+		int N = s.nextInt();
+		int W = s.nextInt();
+		Knapsack[] itm = new Knapsack[N];
+    // 		tem
+		for(int i=0; i<N; i++){
+			itm[i] = new Knapsack();
+			itm[i].w =  s.nextInt();
+			itm[i].v = s.nextInt();
+			itm[i].d = (float) itm[i].v /  (float)itm[i].w ;
+		}
+		
+	   //  Arrays.sort(itm);
+		
+    // 		Arrays.sort(itm, itm.dComparator);
+        QuickSort q = new QuickSort();
+        q.sort(itm,0, itm.length-1);
+        
+		for(int j=0;j<N; j++){
+		    
+		   System.out.println(" weight = "+ itm[j].w + " value = " + itm[j].v + " value by weight ratio = "+itm[j].d);
+		    
+		}
+
+        
+        
+            
+        int[] bag = new int[N];
+        int TotalWeight = 0;
+        float value = 0;
+        for(int i=0; TotalWeight < W && i<itm.length; i++){
+            if(itm[i].w + TotalWeight < W){
+                TotalWeight = TotalWeight + itm[i].w;
+                value = value + itm[i].v;
+                bag[i] = itm[i].w ;
+            }else{
+                int wt = W - TotalWeight;
+                TotalWeight = TotalWeight + wt;
+                value = value +  itm[i].d  * wt;
+                bag[i] = itm[i].w;
+            }
+        }
+        
+		for(int k=0;k<N; k++){
+		    
+		   System.out.println(" bag = "+ bag[k]);
+		    
+		}
+		System.out.println("value is "+value + "weight is " +TotalWeight);
+	}
+	
+	
+// 	public function 
+	
+	
+	
+	
+}
+
+class QuickSort{
+    public int partition(Knapsack arr[], int low, int high){
+        float pivot = arr[high].d;
+        int i = low - 1;
+        for(int j=low; j< high;j++){
+            if(arr[j].d > pivot){
+                i++;
+                Knapsack temp = arr[i];
+                 arr[i] = arr[j];
+                 arr[j] = temp;
+            }
+        }
+        
+        Knapsack temp = arr[i+1] ;
+        arr[i+1] = arr[high];
+        arr[high] = temp;
+        
+        return i+1;
+        
+    }
+    
+     void sort(Knapsack arr[], int low,int high){
+        if(low < high){
+            int mid = partition(arr, low, high);
+            
+            sort(arr,low,mid-1);
+            sort(arr,mid+1, high);
+        }
+    }
+}
+
+
+    
+
+
+
+
+
+
+
+
+
+
+int main(){
+  int T,i,k,N[10];
+  scanf("%d", &T); 
+  
+  for(i=0; i<T; i++)
+   scanf("%d", &N[i]);
+  
+  
+  i=0;
+  
+  do{
+      for(k=1; k<= N[i] ; k++)
+          if(k%3 == 0 && k%5 == 0){
+              printf("FizzBuzz\n");
+          }else
+                if(k%3 == 0){
+                    printf("Fizz\n");
+                }else
+                if(k%5 == 0){
+                    printf("Buzz\n");
+                }else
+                  printf("%d\n",k);
+       i++;           
+      
+  }while(i<T);
+  
+}
+
+In our Area we do not have specific room numbers, the room is identified on the basis of the owners name, as there is a bunchful of rooms here. Though we do have the number c-78 alloted to our sector
+\
+
+In our Area we do not have specific room numbers, the room is identified on the basis of the owners name, as there is a bunchful of rooms here
+
+The Address mentioned in the electricity bill is the same as the address specified here. The light bill employees have updated the address in sightly different format. My Aadhar card, being the propreitor also has the same address as mentioned in the application. Also I am uploading the gumasta license for the same.
+
+
+Yes, I Have the account statement in the name of Jai Mahakal Cable and Internet Services
