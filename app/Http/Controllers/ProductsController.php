@@ -46,12 +46,13 @@ class ProductsController extends Controller
         $total = 0;
         $prod = Product::find($prod_id);
         $order = Order::firstOrNew(['cust_id' => Auth::id()],['ordered' => false]);
+        $order->save();
         if($order){
             $total = $order->total;
 
         }
         $id = $order->id;
-        $items = $order->order_products->count();
+        
         if(!is_null($prod)){
             // $order = Order::firstOrNew(['cust_id' => Auth::id()],['ordered' => false]);
 
@@ -65,8 +66,8 @@ class ProductsController extends Controller
             $order->order_products()->save($op);
             
             $total = $order->total;
-            $order->save();
         }
+        $items = $order->order_products->count();
         return json_encode([$total, $id, $items]);
     }
 
