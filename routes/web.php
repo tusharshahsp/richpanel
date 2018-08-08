@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+
+Route::get('/', [ function () {
+	if(Auth::check())
+    	return redirect()->route('products');
+    return redirect()->route('login');
+}]);
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
