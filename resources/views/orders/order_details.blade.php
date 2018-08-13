@@ -38,11 +38,9 @@
 <div class="footer" align="center" style="background-color:#87A2C0">
     <div class="row" align="center">
         <div class="col-md-12" align="center" style="margin-top:0px;margin-right:5px;margin-left:5px;margin-bottom:0px; padding: 5px 10px">
-            <form>
-                <input type="hidden" name="order_id" id="order_id" value="">
-                @csrf
-                <input  role="button" class="btn btn-info btn-lg" style="background-color: #235486; color:#8DB7DC" value="Confirm Order">
-            </form>
+           <input type="hidden" name="order_id" id="order_id" value="">
+    
+           <button class="btn btn-info btn-lg" type=submit style="background-color: #235486; color:#8DB7DC" disbaled>Confirm Order</button>
         </div>
     </div>
 </div>
